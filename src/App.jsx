@@ -3,26 +3,27 @@ import Grid from "./components/Grid";
 import Header from "./components/Header";
 import ImageData from "./ImgData";
 
-function App() { 
+function App() {
   const [checkedCount, setCheckedCount] = useState(0);
   const [selectedImages, setSelectedImages] = useState([]);
   const [filteredImageData, setFilteredImageData] = useState([]);
   const handleCheckboxCount = (isChecked) => {
     setCheckedCount((prevCount) => (isChecked ? prevCount + 1 : prevCount - 1));
-  }; 
+  };
   const handleDelete = () => {
     console.log(selectedImages);
 
-    const updatedImageData = ImageData.filter(item => !selectedImages.includes(item.imgId)); 
-    setFilteredImageData(updatedImageData)
+    const updatedImageData = ImageData.filter(
+      (item) => !selectedImages.includes(item.imgId)
+    );
+    setFilteredImageData(updatedImageData);
     setSelectedImages([]);
-    setCheckedCount(0)
-
+    setCheckedCount(0);
   };
   useEffect(() => {
-    setFilteredImageData(ImageData)
-  }, [setFilteredImageData])
-  
+    setFilteredImageData(ImageData);
+  }, [setFilteredImageData]);
+
   return (
     <div className="bg-slate-100 ">
       <div className=" flex justify-center items-center h-screen ">
